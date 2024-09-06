@@ -118,3 +118,103 @@ To run the tests, follow these steps:
         ```
 
 ---
+Here’s an updated version of the documentation that includes Dockerization and testing for Docker on Windows:
+
+---
+
+# Documentation: Setup, Run, Test, and Dockerize the Backend Code (Windows)
+
+## Installation
+
+### 1. Fork and Clone the Repository
+1. **Fork the repository** to your GitHub account.
+2. **Clone the forked repository** to your local machine:
+    ```cmd
+    git clone https://github.com/YourUsername/fyle-interview-intern-backend.git
+    cd fyle-interview-intern-backend
+    ```
+
+### 2. Install Requirements
+1. **Create and activate a virtual environment**:
+    ```cmd
+    python -m venv env
+    env\Scripts\activate
+    ```
+
+2. **Install the required dependencies**:
+    ```cmd
+    pip install -r requirements.txt
+    ```
+
+---
+
+## Reset Database
+
+1. **Set the Flask environment variable**:
+    ```cmd
+    set FLASK_APP=core/server.py
+    ```
+
+2. **Delete the SQLite database** (if it exists):
+    ```cmd
+    del core\store.sqlite3
+    ```
+
+3. **Run the database migrations**:
+    ```cmd
+    flask db upgrade -d core/migrations
+    ```
+
+---
+
+## Start the Server
+
+1. If using **Git Bash** or another Bash shell on Windows, start the server by running:
+    ```bash
+    bash run.sh
+    ```
+
+2. If using **Command Prompt**, manually run the commands from `run.sh`:
+    ```cmd
+    set FLASK_APP=core/server.py
+    set FLASK_ENV=development
+    flask run
+    ```
+
+---
+
+## Run Tests
+
+### 1. Run Unit Tests:
+```cmd
+pytest -vvv -s tests/
+```
+
+### 2. Generate Test Coverage Report:
+```cmd
+pytest --cov
+```
+
+### 3. View HTML Coverage Report:
+After running the test coverage command, open the HTML report:
+```cmd
+start htmlcov\index.html
+```
+
+
+### 4. Build and Run the Docker Container
+
+#### 4.1. Build the Docker Image
+In Command Prompt, run the following to build the Docker image:
+```cmd
+docker-compose build
+```
+
+#### 4.2. Run the Docker Container
+Once the image is built, start the container:
+```cmd
+docker-compose up
+```
+### 5. Testcases Passed 
+![test completed](https://github.com/user-attachments/assets/af780ec9-ab9b-49c0-b5c0-9ecfab14e5d5)
+
